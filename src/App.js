@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+// import React, { useEffect, useState } from "react";
+// import DistributionCenters from "./Components/DistributionCenter/DistributionCenters";
+// import './App.css';
+// import './styles.css';
+
+// function App() {
+//   const [data, setData] = useState([]);
+
+//   useEffect(() => {
+//     fetch("https://dcms-backend-dgopr4idaa-ew.a.run.app/dcs")
+//       .then(resp => resp.json())
+//       .then(resp => resp.distribution_centers)
+//       .then(data => setData(data))
+//   }, []);
+
+// return (
+//     <DistributionCenters
+//       title = {'Distribution Center Management'}
+//       header = {['ID', 'Name', 'Short Name', 'Address', 'Type', 'Operations', 'Active', 'Created', 'Updated']}
+//       data = {data}
+//     />
+//   );
+// }
+
+// export default App;
+
+import React, { useEffect, useState } from "react";
+import DistributionCenters from "./Components/DistributionCenter/DistributionCenters";
+import './styles.css';
 
 function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://dcms-backend-dgopr4idaa-ew.a.run.app/dcs")
+      .then(resp => resp.json())
+      .then(resp => resp.distribution_centers)
+      .then(data => setData(data))
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DistributionCenters
+        title = 'Distribution Center Management'
+        header = {['id', 'name', 'shor_name', 'address', 'type', 'operations', 'Active', 'Created', 'Updated']}
+        products = {data}
+      />
     </div>
   );
 }
