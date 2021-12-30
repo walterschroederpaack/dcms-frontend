@@ -43,6 +43,7 @@ const DistributionCenters = (props) => {
       <thead>
         <tr>
           {tableHeader()}
+          {/* TODO Fix sorting by header field, add default sorting */}
         </tr>
       </thead>
       <tbody>

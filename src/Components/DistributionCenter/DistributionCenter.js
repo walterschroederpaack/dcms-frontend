@@ -40,6 +40,7 @@ class DistributionCenter extends React.Component {
       } else {
         this.setState({
           message: response.error.message
+          // TODO Check message response
         })
       }
     });
